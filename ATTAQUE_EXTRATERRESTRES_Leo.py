@@ -56,6 +56,12 @@ def montrer_lettres_communes(mot, lettres):
 def placer_extraterrestres(carte, aliens=None,
                            positions=None, possibles=None,
                            reproduction_rate=1.7):
+    """
+    Ca c'est une partie de code beaucoup plus dure
+    Ca sert a generer la carte et placer les nouveaux aliens
+    Tu peux regarder mais ca te prendra du temps
+    Si tu veux vraiment regarder, dis moi, je commenterais
+    """
     carte_lignes = [list(s) for s in carte.split('\n') if 2<len(s)]
     dimension_x = len(carte_lignes)-2
     dimension_y = (len(carte_lignes[0])-2)
@@ -98,11 +104,12 @@ def placer_extraterrestres(carte, aliens=None,
     return '\n'.join(carte_finale), positions, possibles, couverture
 
 
-
+# Lit le dessin d'alien
 with open('alien.txt') as f:
     alien_dessin = f.readline()
 alien_dessin = alien_dessin.replace(';', '\n')
 
+# Lit la carte de la terre
 with open('map.txt') as f:
     carte_terre = f.readline()
 carte_terre = carte_terre.replace(';', '\n')
@@ -117,6 +124,7 @@ for m in mots:
     mots_nettoyes.append(m.strip())
 
 aliens = 2 # Nombre d'aliens
+# Place les aliens sur la carte de facon aleatoire
 (carte_terre,
  position_aliens,
  possibilitees_aliens,
@@ -155,6 +163,7 @@ while deviner != motDePasse:
     print()
     print("MOT DE PASSE INCORRECT.")
     print()
+    # Place les nouveaux aliens sur la carte
     (carte_terre,
      position_aliens,
      possibilitees_aliens,
